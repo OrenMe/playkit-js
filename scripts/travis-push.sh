@@ -19,11 +19,12 @@ commit_changelog() {
 }
 
 push_master_and_tag() {
+  echo "push_master_and_tag"
   # Remove existing "origin"
   git remote rm origin
   # Add new "origin" with access token in the git URL for authentication
   git remote add origin https://${GH_TOKEN}@github.com/OrenMe/playkit-js.git > /dev/null 2>&1
-  git push --follow-tags --no-verify origin master --quiet
+  git push --follow-tags --no-verify origin master
 }
 
 setup_git

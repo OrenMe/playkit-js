@@ -49,7 +49,7 @@ jobs:
         draft: true
         skip_cleanup: true
         on:
-          tags: false
+          tags: true
     # publish canary package if on master
 #    - stage: releaseCanary
 #      if: branch = master AND type != pull_request
