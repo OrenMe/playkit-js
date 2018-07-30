@@ -29,7 +29,7 @@ elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ];
   # Add new "origin" with access token in the git URL for authentication
   git remote add origin https://${GH_TOKEN}@github.com/OrenMe/playkit-js.git
   git push --follow-tags --no-verify origin master
-  echo $(git status)
+  echo $(git status) 
   echo $(git describe --tags)
   git push origin master
   git push origin $(git describe --tags)
