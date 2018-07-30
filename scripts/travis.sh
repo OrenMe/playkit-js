@@ -19,10 +19,12 @@ elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ];
 #  yarn run flow
 #  yarn run test
   yarn run release
+  git config --global user.email "travis@travis-ci.org"
+  git config --global user.name "Travis CI"
   git remote rm origin
   # Add new "origin" with access token in the git URL for authentication
-  git remote add origin https://${GH_TOKEN}@github.com/OrenMe/playkit-js.git > /dev/null 2>&1
-  yarn run publish
+  git remote add origin https://${GH_TOKEN}@github.com/OrenMe/playkit-js.git
+  git push --follow-tags --no-verify origin master
 
 
 #  yarn run build
