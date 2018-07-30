@@ -19,6 +19,11 @@ elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ];
 #  yarn run flow
 #  yarn run test
   yarn run release
+  git remote rm origin
+  # Add new "origin" with access token in the git URL for authentication
+  git remote add origin https://${GH_TOKEN}@github.com/OrenMe/playkit-js.git > /dev/null 2>&1
+  yarn run publish
+
 
 #  yarn run build
 #  if [[ $(node ./scripts/check-already-published.js) = "not published" ]]; then

@@ -23,9 +23,6 @@ script: ./scripts/travis.sh
 #- npm run flow
 #- npm run test
 
-after_success:
-- sh ./scripts/travis-push.sh
-
 stages:
 #  - lintAndTest
 #  - releaseCanary
@@ -49,7 +46,7 @@ jobs:
         draft: true
         skip_cleanup: true
         on:
-          tags: true
+          tags: false
     # publish canary package if on master
 #    - stage: releaseCanary
 #      if: branch = master AND type != pull_request
