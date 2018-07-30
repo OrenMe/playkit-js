@@ -24,7 +24,7 @@ script: ./scripts/travis.sh
 #- npm run test
 
 after_success:
-- sh ./script/travis-push.sh
+- sh ./scripts/travis-push.sh
 
 stages:
   - lintAndTest
