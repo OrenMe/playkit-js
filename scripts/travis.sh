@@ -19,6 +19,7 @@ elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ];
 #  yarn run flow
 #  yarn run test
   yarn run release
+  yarn run build
   git config --global user.email "travis@travis-ci.org"
   git config --global user.name "Travis CI"
   git remote rm origin
