@@ -14,6 +14,7 @@ elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ];
   # update the version
   # make sure everything is fetched https://github.com/travis-ci/travis-ci/issues/3412
   git fetch --unshallow
+  git checkout master
 #  node ./scripts/set-package-version.js
 #  yarn run lint
 #  yarn run flow
@@ -29,7 +30,7 @@ elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ];
   # Add new "origin" with access token in the git URL for authentication
   git remote add origin https://${GH_TOKEN}@github.com/OrenMe/playkit-js.git
   git push --follow-tags --no-verify origin master
-  echo $(git status) 
+  echo $(git status)
   echo $(git describe --tags)
   git push origin master
   git push origin $(git describe --tags)
