@@ -33,6 +33,8 @@ elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ];
 #  echo $(git status)
 #  echo $(git describe --tags)
   yarn run publish
+  ${TRAVIS_TAG} = $(git describe --tags)
+  echo "${TRAVIS_TAG}"
 #  git push origin master
 #  git push origin $(git describe --tags)
 #  echo "3333"
