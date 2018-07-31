@@ -38,9 +38,9 @@ jobs:
   include:
     # https://docs.travis-ci.com/user/build-stages/deploy-github-releases/
     - stage: release
-    name: "Releasing a new version"
-    if: (branch = master) AND (type = api)
-    env: TRAVIS_MODE=release
+      name: "Releasing a new version"
+      if: (branch = master) AND (type = api)
+      env: TRAVIS_MODE=release
     - stage: deploy
       name: "Deploying"
       if: (branch = master) AND (tag IS present)
