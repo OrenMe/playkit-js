@@ -29,6 +29,7 @@ stages:
 #  - lintAndTest
 #  - releaseCanary
   - release
+  - deploy
 jobs:
   # stage: optional is allowed to be failure
   fast_finish: true
@@ -36,8 +37,9 @@ jobs:
 #    - stage: testFuncOptional
   include:
     # https://docs.travis-ci.com/user/build-stages/deploy-github-releases/
-    - stage: release
-      if: (branch = master) AND (type = api)
+    - stage: deploy
+      name: "Deploying"
+      if: (branch = master) AND (tag IS present)
       env: TRAVIS_MODE=release
       deploy:
         provider: releases
@@ -48,15 +50,18 @@ jobs:
         draft: true
         skip_cleanup: true
         on:
-          tags: false
+          tags: true
     # publish canary package if on master
 #    - stage: releaseCanary
 #      if: branch = master AND type != pull_request
 #      env: TRAVIS_MODE=releaseCanary
     # Required tests
     - stage: lintAndTest
+      name: "Running lint"
       env:   TRAVIS_MODE=lint
     - stage: lintAndTest
+      name: "Running Flow type check"
       env:   TRAVIS_MODE=flow
     - stage: lintAndTest
+      name: "Running unit tests"
       env:   TRAVIS_MODE=unitTests

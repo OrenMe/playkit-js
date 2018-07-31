@@ -10,6 +10,8 @@ elif [ "${TRAVIS_MODE}" = "flow" ]; then
   yarn run flow
 elif [ "${TRAVIS_MODE}" = "unitTests" ]; then
 	yarn run test
+elif [ "${TRAVIS_MODE}" = "deploy" ]; then
+	yarn run build
 elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ]; then
   # update the version
   # make sure everything is fetched https://github.com/travis-ci/travis-ci/issues/3412
@@ -33,8 +35,6 @@ elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ];
 #  echo $(git status)
 #  echo $(git describe --tags)
   yarn run publish
-  ${TRAVIS_TAG} = $(git describe --tags)
-  echo "${TRAVIS_TAG}"
 #  git push origin master
 #  git push origin $(git describe --tags)
 #  echo "3333"
