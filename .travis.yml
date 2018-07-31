@@ -43,7 +43,7 @@ jobs:
       env: TRAVIS_MODE=release
     - stage: deploy
       name: "Deploying"
-      if: tag IS present AND (type = push)
+      if: tag IS present
       env: TRAVIS_MODE=deploy
       deploy:
         provider: releases
