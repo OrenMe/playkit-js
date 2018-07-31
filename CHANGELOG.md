@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.36.0"></a>
+# [0.36.0](https://github.com/kaltura/playkit-js/compare/v0.35.2...v0.36.0) (2018-07-31)
+
+
+### Bug Fixes
+
+* unparsable travis.yml ([d7f0f79](https://github.com/kaltura/playkit-js/commit/d7f0f79))
+* wrong travis config ([676a626](https://github.com/kaltura/playkit-js/commit/676a626))
+
+
+### Features
+
+* add deploy stage ([bae3711](https://github.com/kaltura/playkit-js/commit/bae3711))
+
+
+
 <a name="0.35.2"></a>
 ## [0.35.2](https://github.com/kaltura/playkit-js/compare/v0.35.1...v0.35.2) (2018-07-30)
 
