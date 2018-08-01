@@ -30,7 +30,7 @@
     "scripts": {
       "prechangelog": "cp CHANGELOG.md OLD_CHANGELOG.md",
       "postchangelog": "sort CHANGELOG.md > CHANGELOG.md.sorted && sort OLD_CHANGELOG.md > OLD_CHANGELOG.md.sorted && comm -23 CHANGELOG.md.sorted OLD_CHANGELOG.md.sorted |sed  '/^$/d' > diff.md && rm OLD_CHANGELOG.md && rm OLD_CHANGELOG.md.sorted && rm CHANGELOG.md.sorted",
-      "postcommit": "git commit --amend -F diff.md && rm diff.md"
+      "posttag": "myTag=$(git describe); git tag $myTag $myTag^{} -f -F diff.md && rm diff.md"
     }
   },
   "devDependencies": {
