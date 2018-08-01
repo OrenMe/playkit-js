@@ -47,6 +47,7 @@ jobs:
           secure: $GH_TOKEN
         file_glob: true
         file: dist/*
+        prerelease: true,
 #        draft: true
         skip_cleanup: true
         on:
