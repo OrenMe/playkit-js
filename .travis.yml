@@ -26,8 +26,8 @@ script: ./scripts/travis.sh
 #- npm run test
 
 stages:
-#  - lintAndTest
-#  - releaseCanary
+  - tests
+  - releaseCanary
   - release
   - deploy
 jobs:
@@ -48,21 +48,20 @@ jobs:
         file_glob: true
         file: dist/*
         prerelease: true
-#        draft: true
         skip_cleanup: true
         on:
           tags: false
     # publish canary package if on master
-#    - stage: releaseCanary
-#      if: branch = master AND type != pull_request
-#      env: TRAVIS_MODE=releaseCanary
+    - stage: releaseCanary
+      if: branch = master AND type != pull_request
+      env: TRAVIS_MODE=releaseCanary
     # Required tests
-    - stage: lintAndTest
+    - stage: tests
       name: "Running lint"
       env:   TRAVIS_MODE=lint
-    - stage: lintAndTest
+    - stage: tests
       name: "Running Flow type check"
       env:   TRAVIS_MODE=flow
-    - stage: lintAndTest
+    - stage: tests
       name: "Running unit tests"
       env:   TRAVIS_MODE=unitTests

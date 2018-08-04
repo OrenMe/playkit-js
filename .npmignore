@@ -41,4 +41,17 @@ jspm_packages
 
 .idea
 
-dist/
+.git
+.gitattributes
+.gitignore
+
+docs/
+scripts/
+src/
+test/
+.babelrc
+.editorconfig
+.eslintignore
+.eslintrc.json
+.flowconfig
+
