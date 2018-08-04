@@ -66,3 +66,4 @@ jobs:
     - stage: tests
       name: "Running unit tests"
       env:   TRAVIS_MODE=unitTests
+
