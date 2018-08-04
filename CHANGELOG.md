@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.40.1"></a>
+## [0.40.1](https://github.com/kaltura/playkit-js/compare/v0.40.0...v0.40.1) (2018-08-04)
+
+
+### Bug Fixes
+
+* add ignored files ([e3696c0](https://github.com/kaltura/playkit-js/commit/e3696c0))
+* don't release canary from travis API ([1a2ff81](https://github.com/kaltura/playkit-js/commit/1a2ff81))
+* incorrect call to removed publish script ([d84a649](https://github.com/kaltura/playkit-js/commit/d84a649))
+* travis.sh failing ([adb646d](https://github.com/kaltura/playkit-js/commit/adb646d))
+* travis.sh failing ([47d3b67](https://github.com/kaltura/playkit-js/commit/47d3b67))
+
+
+
 <a name="0.40.0"></a>
 # [0.40.0](https://github.com/kaltura/playkit-js/compare/v0.39.1...v0.40.0) (2018-08-04)
 
