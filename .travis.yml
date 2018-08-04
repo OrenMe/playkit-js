@@ -53,7 +53,7 @@ jobs:
           tags: false
     # publish canary package if on master
     - stage: releaseCanary
-      if: branch = master AND type != pull_request
+      if: branch = master AND type != pull_request AND type != api
       env: TRAVIS_MODE=releaseCanary
     # Required tests
     - stage: tests
