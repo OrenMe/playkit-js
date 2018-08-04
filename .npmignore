@@ -54,4 +54,7 @@ test/
 .eslintignore
 .eslintrc.json
 .flowconfig
+.nmprc
+webpack.config.js
+karma.conf.js
 
