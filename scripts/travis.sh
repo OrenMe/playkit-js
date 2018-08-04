@@ -2,6 +2,21 @@
 # https://docs.travis-ci.com/user/customizing-the-build/#Implementing-Complex-Build-Steps
 set -ev
 
+setup_npm() {
+  # write the token to config
+  # see https://docs.npmjs.com/private-modules/ci-server-config
+  echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
+}
+
+setup_git() {
+  git config --global user.email "travis@travis-ci.org"
+  git config --global user.name "Travis CI"
+  git remote rm origin
+
+  # Add new "origin" with access token in the git URL for authentication
+  git remote add origin https://${GH_TOKEN}@github.com/OrenMe/playkit-js.git
+}
+
 yarn install
 
 if [ "${TRAVIS_MODE}" = "lint" ]; then
@@ -22,8 +37,7 @@ elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ];
 #  yarn run flow
 #  yarn run test
 
-#  setup_npm
-  echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
+  setup_npm
   setup_git
 
   if [ "${TRAVIS_MODE}" = "release" ]; then
@@ -65,18 +79,3 @@ else
 	echo "Unknown travis mode: ${TRAVIS_MODE}" 1>&2
 	exit 1
 fi
-
-#setup_npm() {
-  # write the token to config
-  # see https://docs.npmjs.com/private-modules/ci-server-config
-#  echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
-#}
-
-setup_git() {
-  git config --global user.email "travis@travis-ci.org"
-  git config --global user.name "Travis CI"
-  git remote rm origin
-
-  # Add new "origin" with access token in the git URL for authentication
-  git remote add origin https://${GH_TOKEN}@github.com/OrenMe/playkit-js.git
-}
