@@ -47,10 +47,12 @@ elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ];
     yarn publish --new-version $(echo $(npx -c 'echo "$npm_package_version"'))
     echo "Published."
   elif [ "${TRAVIS_MODE}" = "releaseCanary" ]; then
-    echo $(git describe --long --tags --always)
-    canaryVersion=$(git describe --long --tags --always | sed -e 's/-/\./g' -e 's/\(.*\.\)\([[:digit:]]*\..*\)/\canary\.\2/g')
-    echo $canaryVersion
-    yarn run release --prerelease ${canaryVersion} --skip.commit=true --skip.changelog=true --skip.tag=true
+#    echo $(git describe --long --tags --always)
+#    canaryVersion=$(git describe --long --tags --always | sed -e 's/-/\_/g' -e 's/\(.*\.\)\([[:digit:]]*_.*\)/\canary\.\2/g')
+#    echo $canaryVersion
+#    sha=$(git rev-parse --short HEAD)
+#    yarn run release --prerelease ${canaryVersion} --skip.commit=true --skip.changelog=true --skip.tag=true
+    yarn run release --prerelease canary --skip.commit=true --skip.changelog=true --skip.tag=true
     yarn run build
 #    reset the changelog file
     git checkout -- CHANGELOG.md
