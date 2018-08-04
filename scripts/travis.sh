@@ -43,7 +43,7 @@ elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ];
   if [ "${TRAVIS_MODE}" = "release" ]; then
     yarn run release
     yarn run build
-    yarn run publish
+    git push --follow-tags --no-verify origin master
     yarn publish
     echo "Published."
   elif [ "${TRAVIS_MODE}" = "releaseCanary" ]; then
