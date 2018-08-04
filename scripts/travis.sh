@@ -48,7 +48,7 @@ elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ];
     echo "Published."
   elif [ "${TRAVIS_MODE}" = "releaseCanary" ]; then
     echo $(git describe --long --tags --always)
-    canaryVersion=$(git describe --long --tags --always | sed -e 's/-/\./g' -e 's/\(.*\.\)\([[:digit:]]*\..*\)/\canary+\2/g')
+    canaryVersion=$(git describe --long --tags --always | sed -e 's/-/\./g' -e 's/\(.*\.\)\([[:digit:]]*\..*\)/\canary\.\2/g')
     echo $canaryVersion
     yarn run release --prerelease ${canaryVersion} --skip.commit=true --skip.changelog=true --skip.tag=true
     yarn run build
