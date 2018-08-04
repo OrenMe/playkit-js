@@ -13,14 +13,17 @@ elif [ "${TRAVIS_MODE}" = "unitTests" ]; then
 elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ]; then
   # update the version
   # make sure everything is fetched https://github.com/travis-ci/travis-ci/issues/3412
+  echo "Update git source"
   git fetch --unshallow
+  echo "Switch to master"
   git checkout master
 #  node ./scripts/set-package-version.js
 #  yarn run lint
 #  yarn run flow
 #  yarn run test
 
-  setup_npm
+#  setup_npm
+  echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
   setup_git
 
   if [ "${TRAVIS_MODE}" = "release" ]; then
@@ -63,11 +66,11 @@ else
 	exit 1
 fi
 
-setup_npm() {
+#setup_npm() {
   # write the token to config
   # see https://docs.npmjs.com/private-modules/ci-server-config
-  echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
-}
+#  echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
+#}
 
 setup_git() {
   git config --global user.email "travis@travis-ci.org"
