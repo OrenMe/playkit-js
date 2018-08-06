@@ -52,7 +52,7 @@ elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ];
 #    echo $canaryVersion
 #    sha=$(git rev-parse --short HEAD)
 #    yarn run release --prerelease ${canaryVersion} --skip.commit=true --skip.changelog=true --skip.tag=true
-    yarn run release --prerelease canary --skip.commit=true --skip.changelog=true --skip.tag=true
+    yarn run release --prerelease canary --skip.commit=true --skip.tag=true
     yarn run build
 #    reset the changelog file
     git checkout -- CHANGELOG.md
