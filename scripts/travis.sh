@@ -29,63 +29,30 @@ elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ];
   # update the version
   # make sure everything is fetched https://github.com/travis-ci/travis-ci/issues/3412
   echo "Update git source"
-  git fetch --unshallow
+  git fetch --unshallow 1>&2
   echo "Switch to master"
   git checkout master
-#  node ./scripts/set-package-version.js
-#  yarn run lint
-#  yarn run flow
-#  yarn run test
-
-#  setup_npm
-#  setup_git
-
   if [ "${TRAVIS_MODE}" = "release" ]; then
+    echo "Run standard-version"
     yarn run release
+    echo "Building..."
     yarn run build
-#    git push --follow-tags --no-verify origin master
-#    yarn publish --new-version $(echo $(npx -c 'echo "$npm_package_version"'))
-    echo "Published."
+    echo "Finish building"
   elif [ "${TRAVIS_MODE}" = "releaseCanary" ]; then
-#    echo $(git describe --long --tags --always)
-#    canaryVersion=$(git describe --long --tags --always | sed -e 's/-/\_/g' -e 's/\(.*\.\)\([[:digit:]]*_.*\)/\canary\.\2/g')
-#    echo $canaryVersion
+    echo "Run standard-version"
+    yarn run release --prerelease canary --skip.commit=true --skip.tag=true
     sha=$(git rev-parse --verify --short HEAD)
     echo "Current sha ${sha}"
-#    yarn run release --prerelease ${canaryVersion} --skip.commit=true --skip.changelog=true --skip.tag=true
-    yarn run release --prerelease canary --skip.commit=true --skip.tag=true
-    currentVersion=$(node -p "require('./package.json').version")
+    currentVersion=$(npx -c 'echo "$npm_package_version"')
     echo "Current version ${currentVersion}"
     newVersion=$(echo $currentVersion | sed -e "s/canary\.[[:digit:]]/canary.${sha}/g")
     echo "New version ${newVersion}"
-    sed -iE "s/$currentVersion/$newVersion/g" package.json
-
+    sed -i "" "s/$currentVersion/$newVersion/g" package.json
+    sed -i "" "s/$currentVersion/$newVersion/g" CHANGELOG.md
+    echo "Building..."
     yarn run build
-#    reset the changelog file
-#    git checkout -- CHANGELOG.md
-#    yarn publish --new-version $(echo $(npx -c 'echo "$npm_package_version"')) --tag canary
-#    echo "Published canary."
-#    curl https://purge.jsdelivr.net/npm/playkit-js-test@canary
-#    echo "Cleared jsdelivr cache."
+    echo "Finish building"
   fi
-
-#  yarn run build
-#  if [[ $(node ./scripts/check-already-published.js) = "not published" ]]; then
-    # write the token to config
-    # see https://docs.npmjs.com/private-modules/ci-server-config
-#    echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
-#    if [ "${TRAVIS_MODE}" = "releaseCanary" ]; then
-#      npm publish --tag canary
-#      echo "Published canary."
-#      curl https://purge.jsdelivr.net/npm/hls.js@canary
-#      echo "Cleared jsdelivr cache."
-#    elif [ "${TRAVIS_MODE}" = "release" ]; then
-#      npm publish
-#      echo "Published."
-#    fi
-#  else
-#    echo "Already published."
-#  fi
 else
 	echo "Unknown travis mode: ${TRAVIS_MODE}" 1>&2
 	exit 1
