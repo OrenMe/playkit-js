@@ -2,20 +2,20 @@
 # https://docs.travis-ci.com/user/customizing-the-build/#Implementing-Complex-Build-Steps
 set -ev
 
-setup_npm() {
-  # write the token to config
-  # see https://docs.npmjs.com/private-modules/ci-server-config
-  echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
-}
-
-setup_git() {
-  git config --global user.email "travis@travis-ci.org"
-  git config --global user.name "Travis CI"
-  git remote rm origin
-
-  # Add new "origin" with access token in the git URL for authentication
-  git remote add origin https://${GH_TOKEN}@github.com/OrenMe/playkit-js.git
-}
+#setup_npm() {
+#  # write the token to config
+#  # see https://docs.npmjs.com/private-modules/ci-server-config
+#  echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
+#}
+#
+#setup_git() {
+#  git config --global user.email "travis@travis-ci.org"
+#  git config --global user.name "Travis CI"
+#  git remote rm origin
+#
+#  # Add new "origin" with access token in the git URL for authentication
+#  git remote add origin https://${GH_TOKEN}@github.com/OrenMe/playkit-js.git
+#}
 
 yarn install
 
@@ -37,8 +37,8 @@ elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ];
 #  yarn run flow
 #  yarn run test
 
-  setup_npm
-  setup_git
+#  setup_npm
+#  setup_git
 
   if [ "${TRAVIS_MODE}" = "release" ]; then
     yarn run release
@@ -50,9 +50,13 @@ elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ];
 #    echo $(git describe --long --tags --always)
 #    canaryVersion=$(git describe --long --tags --always | sed -e 's/-/\_/g' -e 's/\(.*\.\)\([[:digit:]]*_.*\)/\canary\.\2/g')
 #    echo $canaryVersion
-#    sha=$(git rev-parse --short HEAD)
+    sha=$(git rev-parse --verify --short HEAD)
 #    yarn run release --prerelease ${canaryVersion} --skip.commit=true --skip.changelog=true --skip.tag=true
     yarn run release --prerelease canary --skip.commit=true --skip.tag=true
+    currentVersion=$(node -p "require('./package.json').version")
+    newVersion=$($currentVersion | sed -e "s/canary\.[[:digit:]]/canary.${sha}/g")
+    sed -iE "s/$currentVersion/$newVersion/g" package.json
+
     yarn run build
 #    reset the changelog file
 #    git checkout -- CHANGELOG.md

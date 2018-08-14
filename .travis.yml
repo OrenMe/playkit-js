@@ -54,6 +54,7 @@ jobs:
         provider: npm
         api_key:
           api_key: $NPM_TOKEN
+          email: $NPM_EMAIL
         skip_cleanup: true
         on:
           tags: true
@@ -66,6 +67,7 @@ jobs:
         provider: npm
         api_key:
           api_key: $NPM_TOKEN
+          email: $NPM_EMAIL
         skip_cleanup: true
         tag: canary
         on:
