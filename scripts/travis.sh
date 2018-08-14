@@ -43,8 +43,8 @@ elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ];
   if [ "${TRAVIS_MODE}" = "release" ]; then
     yarn run release
     yarn run build
-    git push --follow-tags --no-verify origin master
-    yarn publish --new-version $(echo $(npx -c 'echo "$npm_package_version"'))
+#    git push --follow-tags --no-verify origin master
+#    yarn publish --new-version $(echo $(npx -c 'echo "$npm_package_version"'))
     echo "Published."
   elif [ "${TRAVIS_MODE}" = "releaseCanary" ]; then
 #    echo $(git describe --long --tags --always)
@@ -55,11 +55,11 @@ elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ];
     yarn run release --prerelease canary --skip.commit=true --skip.tag=true
     yarn run build
 #    reset the changelog file
-    git checkout -- CHANGELOG.md
-    yarn publish --new-version $(echo $(npx -c 'echo "$npm_package_version"')) --tag canary
-    echo "Published canary."
-    curl https://purge.jsdelivr.net/npm/playkit-js-test@canary
-    echo "Cleared jsdelivr cache."
+#    git checkout -- CHANGELOG.md
+#    yarn publish --new-version $(echo $(npx -c 'echo "$npm_package_version"')) --tag canary
+#    echo "Published canary."
+#    curl https://purge.jsdelivr.net/npm/playkit-js-test@canary
+#    echo "Cleared jsdelivr cache."
   fi
 
 #  yarn run build
