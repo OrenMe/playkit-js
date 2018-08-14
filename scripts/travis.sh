@@ -51,10 +51,13 @@ elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ];
 #    canaryVersion=$(git describe --long --tags --always | sed -e 's/-/\_/g' -e 's/\(.*\.\)\([[:digit:]]*_.*\)/\canary\.\2/g')
 #    echo $canaryVersion
     sha=$(git rev-parse --verify --short HEAD)
+    echo "Current sha ${sha}"
 #    yarn run release --prerelease ${canaryVersion} --skip.commit=true --skip.changelog=true --skip.tag=true
     yarn run release --prerelease canary --skip.commit=true --skip.tag=true
     currentVersion=$(node -p "require('./package.json').version")
-    newVersion=$($currentVersion | sed -e "s/canary\.[[:digit:]]/canary.${sha}/g")
+    echo "Current version ${currentVersion}"
+    newVersion=$(echo $currentVersion | sed -e "s/canary\.[[:digit:]]/canary.${sha}/g")
+    echo "New version ${newVersion}"
     sed -iE "s/$currentVersion/$newVersion/g" package.json
 
     yarn run build
