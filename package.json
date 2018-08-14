@@ -1,6 +1,6 @@
 {
   "name": "playkit-js-test",
-  "version": "0.40.2",
+  "version": "0.41.0",
   "main": "dist/playkit.js",
   "scripts": {
     "clean": "rm -rf ./dist",

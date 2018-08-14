@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.41.0"></a>
+# [0.41.0](https://github.com/kaltura/playkit-js/compare/v0.40.2...v0.41.0) (2018-08-14)
+
+
+### Bug Fixes
+
+* incorrect semver string ([#4](https://github.com/kaltura/playkit-js/issues/4)) ([dba5b79](https://github.com/kaltura/playkit-js/commit/dba5b79))
+* incorrect travis ([3f9ab61](https://github.com/kaltura/playkit-js/commit/3f9ab61))
+* npm deployment ([cb79ae1](https://github.com/kaltura/playkit-js/commit/cb79ae1))
+* remove build payloads after install ([#2](https://github.com/kaltura/playkit-js/issues/2)) ([ae60161](https://github.com/kaltura/playkit-js/commit/ae60161))
+* remove call to delete chrome package ([4fca072](https://github.com/kaltura/playkit-js/commit/4fca072))
+* script cleanup ([6d0e578](https://github.com/kaltura/playkit-js/commit/6d0e578))
+* semver issue ([0c78e5c](https://github.com/kaltura/playkit-js/commit/0c78e5c))
+* semver issues ([9c45be8](https://github.com/kaltura/playkit-js/commit/9c45be8))
+* stam ([#3](https://github.com/kaltura/playkit-js/issues/3)) ([5463e4f](https://github.com/kaltura/playkit-js/commit/5463e4f))
+* travis build fail ([f237b25](https://github.com/kaltura/playkit-js/commit/f237b25))
+* travis script ([755ec25](https://github.com/kaltura/playkit-js/commit/755ec25))
+
+
+### Features
+
+* add changelog to canary npm ([343c9d4](https://github.com/kaltura/playkit-js/commit/343c9d4))
+* test new deploy script ([7d6dbd0](https://github.com/kaltura/playkit-js/commit/7d6dbd0))
+
+
+
 <a name="0.40.2"></a>
 ## [0.40.2](https://github.com/kaltura/playkit-js/compare/v0.40.1...v0.40.2) (2018-08-04)
 
