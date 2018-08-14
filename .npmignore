@@ -44,6 +44,11 @@ jspm_packages
 .git
 .gitattributes
 .gitignore
+.github
+flow-typed
+.prettierignore
+.prettierrc
+.travis.yml
 
 docs/
 scripts/
