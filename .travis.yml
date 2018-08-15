@@ -61,7 +61,7 @@ jobs:
             branch: master
     # publish canary package if on master
     - stage: releaseCanary
-      if: (branch = master) AND (type != pull_request)
+      if: (branch = master) AND (type != pull_request) AND commit_message !~ /(no-deploy|wip)/
       env: TRAVIS_MODE=releaseCanary
       deploy:
         provider: npm
