@@ -26,6 +26,7 @@ script: ./scripts/travis.sh
 
 stages:
   - tests
+    if: ((branch = master) AND ( commit_message !~ /^chore\(release\)/ )) OR (tag IS present) OR (type = pull_request)
   - releaseCanary
   - release
   - deploy
@@ -74,15 +75,12 @@ jobs:
           branch: master
     # Required tests
     - stage: tests
-      if: (branch = master AND ( commit_message !~ /^chore\(release\)/ )) OR (tag IS present) OR (type = pull_request)
       name: "Running lint"
       env:   TRAVIS_MODE=lint
     - stage: tests
-      if: (branch = master AND ( commit_message !~ /^chore\(release\)/ )) OR (tag IS present) OR (type = pull_request)
       name: "Running Flow type check"
       env:   TRAVIS_MODE=flow
     - stage: tests
-      if: (branch = master AND ( commit_message !~ /^chore\(release\)/ )) OR (tag IS present) OR (type = pull_request)
       name: "Running unit tests"
       env:   TRAVIS_MODE=unitTests
 
