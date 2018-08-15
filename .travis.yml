@@ -74,12 +74,15 @@ jobs:
           branch: master
     # Required tests
     - stage: tests
+      if: (branch = master) OR (tag IS present) OR (type = pull_request)
       name: "Running lint"
       env:   TRAVIS_MODE=lint
     - stage: tests
+      if: (branch = master) OR (tag IS present) OR (type = pull_request)
       name: "Running Flow type check"
       env:   TRAVIS_MODE=flow
     - stage: tests
+      if: (branch = master) OR (tag IS present) OR (type = pull_request)
       name: "Running unit tests"
       env:   TRAVIS_MODE=unitTests
 
