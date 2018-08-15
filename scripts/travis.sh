@@ -31,8 +31,8 @@ elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ];
   echo "Update git source"
   git fetch --unshallow 1>&2
   if [ "${TRAVIS_MODE}" = "release" ]; then
-    echo "Run standard-version"
-    yarn run release
+#    echo "Run standard-version"
+#    yarn run release
     echo "Building..."
     yarn run build
     echo "Finish building"
