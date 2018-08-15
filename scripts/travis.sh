@@ -30,8 +30,6 @@ elif [ "${TRAVIS_MODE}" = "release" ] || [ "${TRAVIS_MODE}" = "releaseCanary" ];
   # make sure everything is fetched https://github.com/travis-ci/travis-ci/issues/3412
   echo "Update git source"
   git fetch --unshallow 1>&2
-  echo "Switch to master"
-  git checkout master
   if [ "${TRAVIS_MODE}" = "release" ]; then
     echo "Run standard-version"
     yarn run release
