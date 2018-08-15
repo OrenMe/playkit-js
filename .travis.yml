@@ -41,23 +41,23 @@ jobs:
       if: (type NOT IN (pull_request, api)) AND tag IS present
       env: TRAVIS_MODE=release
       deploy:
-        provider: releases
-        api_key:
-          secure: $GH_TOKEN
-        file_glob: true
-        file: dist/*
-        prerelease: true
-        skip_cleanup: true
-        on:
-          tags: true
-      deploy:
-        provider: npm
-        api_key: $NPM_TOKEN
-        email: $NPM_EMAIL
-        skip_cleanup: true
-        on:
-          tags: true
-          branch: master
+        - provider: releases
+          api_key:
+            secure: $GH_TOKEN
+          file_glob: true
+          file: dist/*
+          prerelease: true
+          skip_cleanup: true
+          on:
+            branch: master
+            tags: true
+        - provider: npm
+          api_key: $NPM_TOKEN
+          email: $NPM_EMAIL
+          skip_cleanup: true
+          on:
+            tags: true
+            branch: master
     # publish canary package if on master
     - stage: releaseCanary
       if: (branch = master) AND (type NOT IN (pull_request, api)) AND (tag IS NOT present)
