@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.42.0"></a>
+# [0.42.0](https://github.com/kaltura/playkit-js/compare/v0.41.5...v0.42.0) (2018-08-15)
+
+
+### Features
+
+* don't run release task on tag ([52a403c](https://github.com/kaltura/playkit-js/commit/52a403c))
+
+
+
 <a name="0.41.5"></a>
 ## [0.41.5](https://github.com/kaltura/playkit-js/compare/v0.41.4...v0.41.5) (2018-08-15)
 
