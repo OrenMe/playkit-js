@@ -1,3 +1,4 @@
+conditions: v1
 sudo: required
 dist: trusty
 language: node_js
@@ -38,7 +39,7 @@ jobs:
     # https://docs.travis-ci.com/user/build-stages/deploy-github-releases/
     - stage: release
       name: "Releasing a new version"
-      if: (type NOT IN (pull_request, api)) AND tag IS present
+      if: (branch = master) AND (type NOT IN (pull_request, api)) AND tag IS present
       env: TRAVIS_MODE=release
       deploy:
         - provider: releases
