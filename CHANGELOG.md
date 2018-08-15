@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.43.1"></a>
+## [0.43.1](https://github.com/kaltura/playkit-js/compare/v0.43.0...v0.43.1) (2018-08-15)
+
+
+### Bug Fixes
+
+* don't run canary release on tag commit ([0582536](https://github.com/kaltura/playkit-js/commit/0582536))
+* travis.yml parse error ([251f32e](https://github.com/kaltura/playkit-js/commit/251f32e))
+* travis.yml parse error ([8554aea](https://github.com/kaltura/playkit-js/commit/8554aea))
+* travis.yml parse error ([47eec9a](https://github.com/kaltura/playkit-js/commit/47eec9a))
+
+
+
 <a name="0.43.0"></a>
 # [0.43.0](https://github.com/kaltura/playkit-js/compare/v0.42.0...v0.43.0) (2018-08-15)
 
